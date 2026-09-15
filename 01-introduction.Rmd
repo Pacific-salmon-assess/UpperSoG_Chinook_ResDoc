@@ -1,0 +1,50 @@
+# ABSTRACT
+
+The Abstract is mandatory. This section will be posted in HTML format on the CSAS website followed by the link to the full PDF version of the publication.
+
+The Abstract must not be more than half a page (roughly 400 words).
+
+\newpage
+
+# INTRODUCTION
+
+Introduction is not mandatory, but when available, it begins on page 1.
+
+# OTHER HEADINGS AS APPROPRIATE
+
+Research Documents explain technical information and data to support the advice. Other headings may include Methods, Results, and Discussion. These headings are optional and context dependent.
+
+## LISTS
+
+CSAS allows ordered lists:
+
+1. Item 1
+1. Item 2
+
+
+and bulleted lists:
+
+- Item 1
+- Item 2
+
+
+Note that sub-list items are not supported (you would have to manually apply the List Number 2 or List Bullet 2 style after).
+
+Priors for capacity, $S_{REP}$, are described in Appendix \@ref(app:priors).
+
+<!--CH: tips
+//This is a reference to a section: Section \@ref(sec:math).
+
+This is a reference to an appendix: Appendix \@ref(app:priors). And the other appendix: Appendix \@ref(app:additional).
+
+
+**Tips for Bibliographies**
+
+- The cite key (a citation's label) needs to be unique from the other entries.
+
+- Bibliographies made using BibTeX (whether manually or using a manager) accept LaTeX markup, so you can italicize and add symbols as necessary.
+
+- To force capitalization in an article title or where all lowercase is generally used, bracket the capitalized word in curly braces. E.g. `{Pacific Cod}`.
+
+CSAS style requires the bibliography to be before the appendices and before tables and figures if you keep those together at the end of your document.
+-->

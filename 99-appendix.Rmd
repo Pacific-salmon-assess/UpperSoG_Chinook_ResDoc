@@ -1,0 +1,109 @@
+\newpage
+
+# APPENDIX `r new_appendix()`. PRIORS ON CAPACITY {#app:priors}
+
+
+Priors on capacity, or spawner abundances at replacement, $S_{REP}$, are derived from the integrated watershed area model, IWAM, [@kitching_integrated_nodate] with assumptions about productivity from a meta-analyses of spawner-recruitment relationships from British Columbia [@greenberg_non-stationary_nodate].
+
+
+## Integrated Watershed-Area Model, IWAM
+
+IWAM predicts $S_{MAX}$ for Chinook populations without spawner-recruitment data from the area of the watershed that is accessible for spawning [@kitching_integrated_nodate], based on a set of 25 synoptic populations from the NE Pacific where spawner-recruitment time-series are available, with time-series ending in 2000 as described in @parkenHabitatbasedMethodsEstimate2006. IWAM predicts $S_{MAX}$ for Chinook with ocean-type and stream-type life-histories separately. Details are provided in [@kitching_integrated_nodate], and a summary of the model predictions is show in Fig. \@ref(fig:fig-iwam).
+
+```{r fig-iwam, fig.cap="Integrated watershed area model, predicting spawner abundance at maximum recruitment from accessible watershed area for Chinook salmon, for ocean-type (blue) and stream-type (green) life-histories. (a) depicts axes on the log scale, and (b) on the raw scale.", out.width="100%", out.height = "60%"}
+
+knitr::include_graphics(here("figures", "iwam.png"))
+
+```
+
+While $S_{REP}$ can also be calculated within IWAM based on the equation,
+
+\begin{equation}
+   S_{REP}  =  log(\alpha) \times S_{MAX}, 
+  (\#eq:Srep-eq)
+\end{equation}
+
+this calculation requires an assumption about productivity, $\alpha$, which can be derived from the underlying 25 synoptic time-series, described in @parkenHabitatbasedMethodsEstimate2006. For ocean-type Chinook salmon, the mean productivity from IWAM is estimated to be 6.2 recruits/spawner ($log(\alpha)$ = 1.83) [@kitching_integrated_nodate].  
+
+## Alternative assumptions about productivity
+
+A recent meta-analysis of spawner-recruitment relationships from across the NE Pacific, including Cowichan River on Vancouver Island (1 population) and the Fraser River (3 populations), identified productivities that were much lower than that from IWAM (Fig. \@ref(fig:fig-prod-GreenbergIWAM)). The time-series used in this meta-analyses ended between 2013-2016, and therefore include data under more recent conditions.
+
+
+```{r fig-prod-GreenbergIWAM, fig.cap="Distribution of log producivity inferred from the Integrated Watershed Area Model, IWAM, and estimated in recent meta-analysis, including Cowichan River and Fraser River"}
+
+logalpha_IWAM <- 1.83
+logalpha_IWAM_sig <- 0.1 
+logalpha_Cow <- 0.87
+logalpha_Cow_sig <- 0.23
+logalpha_Fr <- 0.87
+logalpha_Fr_sig <- 0.19
+
+df <- data.frame(
+  Source = c(
+    rep("IWAM", 1000), 
+    rep("Cowichan", 1000), 
+    rep("Fraser", 1000)
+    ),  
+  Productivity = c(
+    rnorm(1000, logalpha_IWAM, logalpha_IWAM_sig),
+    rnorm(1000, logalpha_Cow, logalpha_Cow_sig),
+    rnorm(1000, logalpha_Fr, logalpha_Fr_sig)
+    )
+  )
+
+theme_set(
+  theme_bw() +
+    theme(panel.grid.major = element_blank(),
+      panel.grid.minor = element_blank())
+)
+
+ggplot(df, aes(x=Productivity, colour=Source, fill=Source)) + 
+  geom_density(alpha = 0.2) +
+  xlab("Productivity log(recruits/spawner)") +
+  ylab("Density") 
+
+
+
+```
+
+Uncertainty intervals for $S_{REP}$ were approximated by bootstrapping values of $log(\alpha)$ and $S_{MAX}$ from their respective uncertainty distributions. For $S_{MAX}$, samples were drawn from a normal distribution of $log(S_{MAX})$ derived from IWAM, and were exponeniated to calculate a distribution of $S_{REP}$ from Eqn. \@ref(eq:Srep-eq). This method for estimating uncertainty in $S_{REP}$ does not account for the well-established covariance between Ricker parameters, $log(\alpha)$ and $1/\beta = S_{MAX}$, or, the associated covariance between $log(\alpha)$ and the parameters of IWAM, which may result in overestimation of uncertainty. Methods to account for these covariances are in development and will be included in future analyses.
+<!--CH comment: Carrie to check with Tor about under vs over estimation of uncertainty-->
+
+When updated (lower) assumptions about productivity are used to calculate $S_{REP}$, values are much lower than when productivity is assumed from the IWAM model based on historical conditions, as illustrated for Salmon River, which has an estimated  $S_{MAX}$ = 2551 (Fig. \@ref(fig:fig-SRexamples)). The "local-recent" productivity was derived from Cowichan River Chinook, though the mean productivity was the same when estimated from Fraser River Chinook [@greenberg_non-stationary_nodate]. 
+
+
+```{r fig-SRexamples, fig.cap="Inferred spawner recruitment relationships under different assumptions about productivity from the IWAM model (regional-historical, blue curve) and from a recent meta-analysis (local-recent, pink curve), for Salmon River. Ribbons represent 95% confidence intervals. The grey diagonal line is the 1:1 replacement line, and the Vertical grey dotted line is the spawner abundance at maximum recruitment, which is derived from IWAM and is the same for both assumptions about productivity. The vertical dashed lines are the spawner abundances at replacement, coloured by the assumption about productivity."}
+
+knitr::include_graphics(here("figures", "SR_priors_SalmonRiver.png"))
+
+```
+
+
+When $S_{REP}$ is used as a prior in the conditioning model, the choice of $S_{REP}$ impacts estimation of benchmarks and populations status. For example, when two options for $S_{REP}$ are used as priors for Woss River (the largest natural-dominated population in this CU), current abundances tend to be either  far below the lower benchmark (assumption of productivity based on IWAM) are above the upper benchmark (assumption of productivity based on recent meta-analyses) (Fig. \@ref(fig:fig-WossSpawners)).
+
+
+```{r fig-WossSpawners, fig.cap="Time-series of spawner abundancnes relative to benchmarks for Woss River, with assumptions of productivity from IWAM (a), and from recent meta-analyses (b). "}
+
+knitr::include_graphics(
+  here("figures", "Woss_SMSY_combined.png")
+)
+```
+
+For Salmon River, current abundances are above the upper benchmark for both assumptions about productivity (Fig. \@ref(fig:fig-SalmonSpawners)), and for Adam River, current abundances are below the lower benchmark for both productivity assumptions (Fig. \@ref(fig:fig-AdamSpawners)).
+
+```{r fig-SalmonSpawners, fig.cap="Time-series of spawner abundancnes relative to benchmarks for Salmon River, with assumptions of productivity from IWAM (a), and from recent meta-analyses (b). "}
+
+knitr::include_graphics(
+  here("figures", "Salmon_SMSY_combined.png")
+)
+```
+
+```{r fig-AdamSpawners, fig.cap="Time-series of spawner abundancnes relative to benchmarks for Adam River, with assumptions of productivity from IWAM (a), and from recent meta-analyses (b). "}
+
+knitr::include_graphics(
+  here("figures", "Adam_SMSY_combined.png")
+)
+```
+
+
