@@ -1,0 +1,36 @@
+
+\newpage
+
+# RESULTS
+
+## RAPID STATUS ASSESSMENT
+
+## CONDITIONING MODEL
+
+### MODEL FITS AND PARAMETERS
+
+## POPULATION ASSESSMENTS
+
+## SMU ASSESSMENTS
+
+## PROJECTIONS
+
+### PERFORMANCE ACROSS HARVEST AND HATCHERY SCENARIOS
+
+Ice cream plots, for a variety of performance metrics, with individual populations in appendix, and aggregate in main document
+
+### TRADE-OFFS ACROSS SPAWNER AND CATCH OBJECTIVES
+
+Trade-off plots across a range of harvest and hatchery objectives
+
+### SENSITIVITY ANALYSES
+
+Repeated over 3 marine survival (productivity) scenarios
+
+Repeated over terminal harvest scenarios (as alternative MPs. Considering different assumptions about terminal harvest would be better achieved in the OM, by adding unknown levels of additional mortality which would increase estimate of prod)
+
+Repeated over age-at-maturity scenarios
+
+
+
+
