@@ -1,7 +1,5 @@
 \newpage
 
-# APPENDIX `r new_appendix()`. ADDITIONAL ANALYSES {#app:additional}
+# APPENDIX `r new_appendix()`. CONDITIONING MODEL {#app:app-cm}
 
-This appendix demonstrates that figure and table numbering restarts for each appendix.
-
-## SUBSECTION
+This Appendix describes data and parameter inputs into the conditioning model, and the model equations, currently in "CM-Appendix Documentation.docx" (to be moved here, maybe using AI to convert equations to latex)

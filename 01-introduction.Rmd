@@ -1,11 +1,10 @@
-# ABSTRACT
-
+```{abstract, include=FALSE}
 The Abstract is mandatory. This section will be posted in HTML format on the CSAS website followed by the link to the full PDF version of the publication.
 
 The Abstract must not be more than half a page (roughly 400 words).
 
 \newpage
-
+```
 # INTRODUCTION{#Intro}
 
 
@@ -34,9 +33,9 @@ Note that sub-list items are not supported (you would have to manually apply the
 Priors for capacity, $S_{REP}$, are described in Appendix \@ref(app:priors).
 
 <!--CH: tips
-//This is a reference to a section: Section \@ref(sec:math).
+//This is a reference to a section: Section \@ref(sec:Methods).
 
-This is a reference to an appendix: Appendix \@ref(app:priors). And the other appendix: Appendix \@ref(app:additional).
+This is a reference to an appendix: Appendix \@ref(app:priors). And the other appendix: Appendix \@ref(app:app-cm).
 
 
 **Tips for Bibliographies**

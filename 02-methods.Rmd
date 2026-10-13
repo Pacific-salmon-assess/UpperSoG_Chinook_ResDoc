@@ -6,59 +6,160 @@
 
 ## OVERALL APPROACH
 
-Assessment of status of this SMU is based on two data streams: (1) from three natural-dominated populations with over 20 years of spawner abundance data: Nimpkish, Salmon and Adam/Eve Rivers, and (2) from two hatchery-dominated populations: Quinsam and Campbell Rivers. For assessment purposes, abundances for the Quinsam and Campbell Rivers were combined because hatchery fish released from those systems and nearby ocean pens return to both rivers, and it is currently not possible to separately estimate the influence of hatcheries on each.
+The assessment of status for this SMU was based on two data streams: (1) data from three natural-dominated populations with over 20 years of spawner abundance data: Nimpkish, Salmon and Adam/Eve Rivers, and (2) from two hatchery-dominated populations: Quinsam and Campbell Rivers. For assessment purposes, abundances for the Quinsam and Campbell Rivers were combined because hatchery fish released from those systems and nearby ocean pens return to both rivers, and it is currently not possible to separately estimate the influence of hatcheries on each.
 
-Population parameters, including exploitation rates and total returns, were estimated using a conditioning model parameterized from available spawner, CWT, and hatchery release data, for the three natural-dominated populations and the Quinsam/Campbell River. MSY-based population benchmarks  were estimated for the natural dominated systems only because of the lack of density-dependent population dynamics in the Quinsam/Campbell population. The dynamics of that system are dominated by hatchery production and periodic scouring of spawning habitat and are not limited by density. <!--CH comment: Olivia, please add text and figure demonstrating lack of density dependence for Quinsam/Campbell--> 
+Population parameters, including exploitation rates and total returns, were estimated using a conditioning model parameterized from available spawner, CWT, and hatchery release data, for the three natural-dominated populations and the combined hatchery-dominated population. MSY-based population benchmarks, $S_{gen}$ and 85% $S_{MSY}$, were estimated for the natural-dominated populations only because of the lack of density-dependent dynamics in the Quinsam/Campbell population. The dynamics of that system are dominated by hatchery production and periodic scouring of spawning habitat and are not limited by density.  <!--CH comment: Olivia, please add text and figure demonstrating lack of density dependence for Quinsam/Campbell--> 
 
-An SMU- (and CU-) level assessment was derived by aggregating abundances and benchmarks over the three natural-dominated systems to the SMU (CU) level. Further, time-series of total spawner abundances, catches and returns to the SMU including hatchery-dominated populations are also provided. The Upper Stock Reference (USR) and Removal Reference (RR) were identified for the aggregate of the natural-dominated populations using equilibrium trade-off analyses, where the USR was 85% of $S_{MSY}$ and the RR was $U_{MSY}$ (as in @brown_west_2026 for Chinook salmon the west coast of Vancouver Island).
+SMU- (and CU-) level assessments were derived by aggregating abundances and benchmarks over the three natural-dominated systems to the SMU (CU) level. Further, time-series of total spawner abundances, catches and returns to the SMU including hatchery-dominated populations are also provided. The Upper Stock Reference (USR) and Removal Reference (RR) were identified for the aggregate of the natural-dominated populations using equilibrium trade-off analyses, where the USR was 85% of $S_{MSY}$ and the RR was $U_{MSY}$ (as in @brown_west_2026 for Chinook salmon the west coast of Vancouver Island). An alternative USR is presented based on 85% of the sum of individual population-level $S_{MSY}$ values.
 
-An alternative USR is presented based on 85% of the sum of individual population-level $S_{MSY}$ values.
+A CU-status based LRP is provided based on the Rapid Status Assessment of the CU, being above 'red' status [@dfo_methodologies_2022, @dfoRapidStatusApproximations2024].
 
-A CU-status based LRP is provided based on the Rapid Status Assessment of the CU, being above 'red' status [@dfo_methodologies_2022].
-
-An evaluation of candidate harvest and hatchery management options are explored using projections of the 4 populations: Quinsam/Campbell, Nimpkish, Salmon and Adam/Eve Rivers. Projections were run using **salmonMSE** a projection model based on the conditioning model but that separates the dynamics of natural-origin and hatchery origin fish to allow tracking of 'wildness' metrics [@huynh_salmonmse_nodate].  Performance is evaluated against spawner abundance, catch, and PNI objectives within populations, and spawner abundance and catch objectives for the SMU as a whole.
+An evaluation of candidate harvest and hatchery management options were explored using projections of the 4 populations: Quinsam/Campbell, Nimpkish, Salmon and Adam/Eve Rivers. Projections were run using **salmonMSE**, a projection model parameterized from the conditioning model, but differs from that model as it tracks dynamics within the hatchery based on empirically estimated survival rates not captured in the conditioning model [@huynh_salmonmse_nodate].  Performance is evaluated against spawner abundance, catch, and PNI objectives within populations, and spawner abundance and catch objectives for the SMU as a whole.
 
 
 ## CONDITIONING MODEL
 
 ### MODEL OVERVIEW
 
-The conditioning model was based on a state-space, age-structured life cycle model with Ricker spawner-recruit dynamics first described in Walters and Korman @walters_life_2024 and subsequently applied to a Recovery Potential Assessment for East Coast Vancouver Island Chinook Salmon [@filipovic_recovery_nodate; @dfo_recovery_2025] and rebuilding analyses for Sarita River Chinook salmon. This description is adapted from  @walters_life_2024, @filipovic_recovery_nodate and @huynh_salmonmse_2026. 
+The conditioning model was based on a state-space, age-structured, life-cycle model with Ricker spawner-recruit dynamics, described by @walters_life_2024 and subsequently applied in a Recovery Potential Assessment for East Coast Vancouver Island Chinook Salmon [@filipovic_recovery_nodate; @dfo_recovery_2025] and rebuilding analyses for Sarita River Chinook salmon. This description is adapted from  @walters_life_2024, @filipovic_recovery_nodate and @huynh_salmonmse_2026, and is provided in more detail with equations in Appendix \@ref(app:app-cm).
 
-The model uses spawner abundance, CWT, and hatchery release data to estimate catch, exploitation rates, spawner abundances and total number of returns across 5 age classes (Fig. \@ref(fig:fig-cm)), and was run separately for each population.
+The model uses spawner abundance, CWT releases and recoveries, and total hatchery releases to estimate catch, exploitation rates, spawner abundances and total number of returns across 5 age classes (Fig. \@ref(fig:fig-cm)), for each population separately. Briefly, the model estimates freshwater and marine natural mortality rates and fisheries pre-terminal and terminal mortality, where pre-terminal fisheries are defined as occurring on immature fish and terminal fisheries occur on mature fish during return migration. Density-dependence in recruitment is modelled through a Ricker spawner-recruit model reparameterized to predict the annual egg-smolt mortality rate. Marine mortality is assumed to be density-independent. Time-varying parameters are estimated for first marine year mortality rates, maturation rates and fishing (pre-terminal and terminal) mortality rates. 
 
-The model estimates freshwater and marine natural mortality rates and fisheries pre-terminal and terminal mortality. Density-dependence in recruitment is modelled through a Ricker stock-recruit model reparameterized to predict the annual egg-smolt mortality rate. Time-varying parameters are estimated for first marine year mortality rates, maturation rates and fishing (pre-terminal) mortality rates. The model is fit in a Bayesian framework in RTMB (v1.9) using R version 4.5.1 [@r_core_team_r_2025], using model code provided in the [salmonMSE Github repository](https://github.com/Blue-Matter/salmonMSE) and applied in the [Upper Straight of Georgia Github repository](https://github.com/Pacific-salmon-assess/UpperSoG_Chinook). There are four main differences between the model described by @walters_life_2024 and the conditioning model presented here. First, the current model estimates both pre-terminal and terminal fisheries from CWT data instead of only pre-terminal fisheries in @walters_life_2024, where immature fish are vulnerable to pre-terminal fish, and mature fish in their last year of marine life are vulnerable to terminal fisheries. Second, the current model tracks hatchery-origin and natural-origin fish throughout their life-cycle allowing for the calculations of pHOS and PNI metrics over time, which are not tracked in @walters_life_2024. Third, the current model does not include covariates on marine survival (e.g., seal predation and SST), due to weak support for their inclusion for Upper Strait of Georgia <!--CH comment: Matt can you please elaborate on why this support is week, if requried-->, but which were included in @walters_life_2024 that focuses on the southern portion of the Strait where support is stronger. Fourth, our application of the conditioning model included only 5 age classes instead of 6, since age 6 fish are poorly sampled in the CWT monitoring program for Upper Strait of Georgia making their estimation difficult.
+There are five main differences between the model described by @walters_life_2024 and the conditioning model presented here. First, the current model estimates both pre-terminal and terminal fisheries from CWT data instead of only pre-terminal fisheries. Second, the current model tracks hatchery-origin and natural-origin fish throughout their life-cycle allowing for the calculations of pHOS and PNI metrics over time, which are not tracked in @walters_life_2024. Third, the current model includes priors on life-cycle productivity and capacity (the Ricker spawner-recruitment parameters) based on a meta-analysis of spawner recruitment relationships for Chinook Salmon across the NE Pacific and a habitat model of Chinook capacity (see Appendix \@ref(app:priors))), which allows for the estimation of MSY-based benchmarks not included in @walters_life_2024. Fourth, the current model does not include covariates on marine survival (e.g., seal predation and SST), due to weak support for their inclusion for the Upper Strait of Georgia <!--CH comment: Matt can you please elaborate on why this support is weak, if required-->. Fifth, the current application of the conditioning model includes only 5 age classes instead of 6, since age-6 fish are poorly sampled in the CWT monitoring program for Chinook in the Upper Strait of Georgia making their estimation difficult.
 
-```{r fig-cm, fig.cap="Schematic of the conditioning model summarizing interactions between key parameters, constants, and state variables modelled in the conditioning model (adapted from Filipovic et al in press). Orange arrows and rectangles represent freshwater and ocean mortality rates. Green arrows and rectangles represent maturation rates. Black arrows and rectangles represent assumed constants. Dark blue arrows and rectangles represent ocean harvest variables.", fig.width=5, fig.height=3.5}
+The model was fit in a Bayesian framework in RTMB (v1.9) using R version 4.5.1 [@r_core_team_r_2025]. Code for the conditioning model is provided in the [salmonMSE Github repository](https://github.com/Blue-Matter/salmonMSE) and applied in the [Upper Straight of Georgia Github repository](https://github.com/Pacific-salmon-assess/UpperSoG_Chinook).
 
-knitr::include_graphics(here("figures", "CM.png"))
+```{r fig-cm, fig.cap="Schematic of the conditioning model summarizing interactions among key parameters, constants, and state variables modelled in the conditioning model (adapted from Filipovic et al in press). Orange arrows and rectangles represent estiamted freshwater and ocean mortality rates. Green arrows and rectangles represent estimated maturation rates. Blue arrows and rectangles represent estimated exploitation. Black rectangles represent assumed constants.  Circles represent life stages (black) and catch (blue). Grey circles, boxes and arrows represent hatchery dynamics not explicitly modelled in the conditioning model, that are inferred from hatchery releases.", fig.width=6.5, fig.height=3.5}
+
+knitr::include_graphics(here("figures", "CM-flowchart.png"))
 
 ```
 
-Provide a text overview of this schematic, defining terminal and pre-terminal fisheries. See updated flowchart, "ResDoc/CM-flowchart.pptx", which I should continue to update with reference to components of the CM in the appendix.
-Cite Appendix for equations.
 
-<!--CH comment: revise figure so that terminal fisheries are larger, and are before pre-spawn mortality-->
+The schematic in Figure \@ref(fig:fig-cm) shows the interactions among key parameters, constants and state variables in the conditioning model. Briefly, egg abundances were calculated based on spawner numbers and assumptions about pre-spawn mortality and age-specific fecundity derived from empirical analyses and expert opinion. Smolt abundances were then calculated from an estimated Ricker egg-smolt relationship. Survival to age-2 was estimated and assumed to be time-varying, whereas marine survival rates at older ages were age-specific and assumed constant over time. The number of immature fish in the ocean at each age was calculated based on the number of fish in the next younger age class, less the proportion that matured and returned to freshwater and the proportion that were vulnerable to pre-terminal fisheries and were exploited. Pre-terminal catch was calculated from age-specific immature abundances, age-specific vulnerability to pre-terminal exploitation, and the pre-terminal exploitation rate. The number of returning adults was calculated as the sum of immature fish at each age that matured.  Terminal catch was calculated from the number of returning adults, age-specific vulnerability to terminal exploitation, and the terminal exploitation rate. Escapement was the abundances of returns less the terminal catch, and spawner abundances accounted for en-route mortality and sampling that removed fish from the spawning grounds for brood or CWT purposes. Hatchery dynamics were not explicitly estimated in the conditioning model (i.e., brood stock collection and mortality in the hatchery were inferred from the data on hatchery releases and not calculated).
+
+### DATA INPUTS
+
+Natural spawner abundances (escapement) were extracted from NUSEDS reviewed by M. Clarke and T. Rachinksy (DFO StAD) (Fig. \@ref(fig:fig-esc)). The 2025 data were trimmed to match the CWT recovery data.
 
 
-### DATA AND PARAMETER INPUTS
+```{r fig-esc, fig.cap="Observed total escapement (return to river, points with dotted lines) and posterior predicted values (medians and 95% prediction interval), for four populations.", fig.width=5, fig.height=3.5}
+
+
+knitr::include_graphics(here("figures", "escapements.png"))
+  
+
+```
+
+
+
+To be included: 
+
+-Plots of Total hatchery releases (3 pops)- as in CM reports
+
+-Plot of CWT releases (Q/C)- as in CM reports
+
+-plot of CWT recoveries (Q/C); 3: PT catch by age, T catch by age, esc by age, with estimated values
+
+Details in Appendix.
 
 ## REFERENCE POINTS
 
 ### POPULATION-LEVEL LOWER AND UPPER BENCHMARKS
 
-Based on natural-dominated populations
+While the conditioning model provided egg-smolt Ricker parameters, population benchmarks for salmon typically rely on full life-cycle Ricker models that predict adult recruitment as a density-dependent relationship from the number of spawners from the previous generation. The egg-smolt Ricker parameters, $\alpha'$, smolts/eggs at low egg abundances, and $\beta'$, the density-dependence parameter equivalent to the inverse of egg abundances that maximize smolt production, were transformed into full-cycle parameters, $\alpha$ and  $\beta$ after accounting for marine survival, maturation at age, and fecundity (see Appendix \@ref(app:app-cm) for more details), where,
 
-### SMU-LEVEL REFERENCE POINTS: USR AND RR
 
-Based on natural-dominated populations. For aggregate of natural and hatchery-dominated populations, 50th percentile of spawner abundances is provided for comparative purposes, but is not intended as an USR.
+\begin{equation}
+  R = \alpha S e^{-\beta S}, 
+  (\#eq:ricker)
+\end{equation}
+
+$R$ is the number of adult recruits, and $S$ is the number of spawners. Assessments under the WSP typically use $S_{gen}$ as a lower benchmark, the spawner abundances that results in recovery to $S_{MSY}$ in one generation in the absence of fishing under equilibrium conditions, and for Chinook salmon, 85% $S_{MSY}$ as an upper benchmark [@grant_speed_2026; @holtIndicatorsStatusBenchmarks2009]. This upper benchmark is slightly higher than the default of 80% $S_{MSY}$ to align with recommended escapement goals for Chinook salmon under the Pacific Salmon Treaty.  $S_{MSY}$ and $S_{gen}$ were calculated using an explicit solution for $S_{MSY}$ [@scheuerellExplicitSolutionCalculating2016],
+
+\begin{equation}
+  S_{MSY} = \frac{1 - \mathit{W}(e^{1-log(\alpha)})}{\beta}
+  (\#eq:smsy)
+\end{equation}
+
+and solving the following equation for $S_{gen}$,
+
+\begin{equation}
+  S_{MSY} = \alpha S_{gen} e^{-\beta S_{gen}},
+  (\#eq:sgen-solve)
+\end{equation}
+
+where $W$ is the Lambert function. Using the explicit solution for $S_{MSY}$, the equation for $S_{gen}$ can be re-arranged to,
+
+\begin{equation}
+  S_{gen} = \frac{- \mathit{W}(-\beta*S_{MSY}/\alpha)}{\beta}.
+  (\#eq:sgen)
+\end{equation}
+
+Similarly, $U_{MSY}$ can be calculated using the explicit solution,
+
+\begin{equation}
+  U_{MSY} = 1 - \mathit{W}(e^{1-log(\alpha)}).
+  (\#eq:umsy)
+\end{equation}
+
+There are several implicit assumptions frequently associated with these reference points:
+
+1. The spawner-recruit relationship predicts the number of adult recruits from the number of spawners. The density-dependent and density-independent components of survival are modelled together.
+
+2. All exploitation occurs on mature individuals.
+
+3. All returns are equally vulnerable to the terminal fishery.
+
+4. All spawners are equally fecund.
+
+Because this approach to estimating reference points assumes that exploitation is terminal on fully vulnerable age classes and exploitation on this SMU is largely pre-terminal, catches and associated exploitation rates must be converted to ‘adult equivalents’ that account for mortality in the ocean and maturation rates that would have occurred if those fish had been caught terminally. This allows for comparability between estimates of $U_{MSY}$ and estimated catches and exploitation rates.
+
+Benchmarks were calculated for each population separately, for only the natural-dominated populations due to the lack of density-dependent dynamics in the Quinsam/Campbell population.
+
+### CU-LEVEL BENCHMARKS AND SMU-LEVEL REFERENCE POINTS
+
+This section addresses the Terms of Reference element 3, to "Evaluate or provide estimates of candidate reference points (e.g., Upper Stock Reference [USR], Target Reference Point [TRP], Removal Reference [RR]) for the stock, and FRPs for the SMU as requested), where possible. The FRP for the SMU will be an exploitation rate (ER)-based and not an abundance-based value." <!--CH comment: The last sentence may be omitted from the ToR.-->
+
+First we estimated a CU-level lower benchmark by summing $S_{gen}$ values from the three natural-dominated populations, given the guidelines from @withler_genetically_2018 for the inclusion of only populations with PNI estimates >0.5 in WSP CU assessments. We identified two candidate upper benchmarks, one calculated by summing 85% $S_{MSY}$ values for the natural-dominated populations, and a second based on equilibrium trade-off analyses described below. 
+
+Second we identified SMU-level reference points, USR and RR. Aligned with the Terms of Reference element 3b, we identified these reference points using the natural-dominated populations within the SMU. These reference points were estimated using an equilibrium trade-off analysis that accounts for different productivities among component populations, and estimates the aggregate spawner abundances and exploitation that maximizes yield under equilibrium conditions, as applied to assessments for west coast Vancouver Island Chinook [@brown_west_2026], Yukon Chinook [@connors_estimates_2022], and Nass and Skeena Chinook [@dfo_biological_2023]. We recommend the USR derived from the equilibrium trade-off analysis instead of the sum of 85% $S_{MSY}$ values to allow for consistency between the USR and RR and because former accounts for variable productivity among populations when identifying the spawner abundances that maximizes aggregate yield to the CU/SMU.  However, when the USR is used as an upper benchmark for CU status, we recognize the inconsistency in methodology with the lower benchmark based on the sum of $S_{gen}$ values. Both USR values, based on equilibrium trade-off analyses and the sum of 85% $S_{MSY}$ values are provided for completeness.
+
+A TRP is not estimated here because objectives required to identify a target were not provided. 
+
+For the aggregate of natural and hatchery-dominated populations, the 50th percentile of the estimated time-series of aggregate spawner abundances is provided for comparative purposes, but is not intended as an USR. While percentile-based benchmarks have been suggested as benchmarks of CU status under the WSP, these are only recommended under situations when productivity is moderate to high (>2.5 adult recruits/spawner) and harvest rates are low to moderate (<40%) [@holtEvaluatingBenchmarksBiological2018], which does not hold for this SMU. Under these conditions, concurrent declines in abundances and percentile benchmarks can result in status assessments that are more optimistic than those from spawner-recruitment benchmarks, e.g., 85% $S_{MSY}$, due to a shifting baseline [@holtEvaluatingBenchmarksBiological2018]. 
+
+The FRP is provided as a rate equivalent to the RR instead of abundances, as abundance-based reference points that capture the entire SMU including hatchery-dominated populations could not be identified.
+
 
 #### EQUILIBRIUM TRADE-OFF ANALYSES
 
-#### SUM OF POPULATION-LEVEL BENCHMARKS
+
+To estimate $S_{MSY}$ and $U_{MSY}$, the equilibrium spawning population size, $S_{eq}$, was calculated for each of the three natural-dominated populations as,
+
+\begin{equation}
+  S_{eq} = \frac{log(\alpha)- (-log(1-U))}{\beta},
+  (\#eq:seq)
+\end{equation}
+
+where $U$ is the exploitation rate which was varied between 0–99% in 1% increments (as in @brown_west_2026). Posterior distributions of $log(\alpha)$ and $beta$ were pulled from the conditioning models, summarized in [ref: table]
+
+ADD table (see par_vals in equilibrium trade-off code)
+
+The corresponding harvest at equilibrium was then calculated for each population and level of $U$ as,
+
+\begin{equation}
+  H_{eq} = (\alpha S_{eq} e^{-\beta S_{eq}}) - S_{eq}.
+  (\#eq:heq)
+\end{equation}
+
+The $H_{eq}$ values were then summed across the three populations for each level of $U$ to derive the aggregate equilibrium harvest. When plotted against $U$, this provides the exploitation rate that maximizes yield under equilibrium conditions $U_{MSY}$ as the peak of the curve. The associated sum of $S{eq}$ across the three populations can be plotted as a secondary axes to identify the spawner abundances where yield is maximized, $S_{MSY}$. Uncertainty intervals were generated by repeating this procedure over all 4000 samples of the posteriors for $log(\alpha)$ and $beta$.
+
+We further calculated population-specific $U_{MSY}$ values using Eqn. \@ref(eq:umsy) and parameters in Table X, and calculated the number of populations that would be exploited above their $U_{MSY}$ for each exploitation rate increment. Additionally, we calculated population-specific $U_{gen}$ values as the exploitation rate where spawner abundances are equivalent to their $S_{gen}$, and for each candidate $U$,  plotted the number of populations where that $U$ is greater than population-specific $U_{gen}$ values. In this way, it is possible to identify how many populations will be exploited sufficiently high for their abundances to drop below $S_{gen}$ when the aggregate sustainable yield is maximized, under equilibrium abundances.
 
 ### RAPID STATUS ASSESSMENT: CU-BASED LRP
 
+Summary provided here. Details in Appendix.
 
 ## PROJECTIONS
 
