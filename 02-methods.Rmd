@@ -3,6 +3,7 @@
 
 # METHODS{#Methods}
 
+<!-- CH comment: note for the Nation 'Namgis - both a and g are underlined and there is an apostrophe at the start. Not sure how to do this in Rmd-->
 
 ## OVERALL APPROACH
 
@@ -47,7 +48,7 @@ Natural spawner abundances (escapement) were extracted from NUSEDS reviewed by M
 
 
 knitr::include_graphics(here("figures", "escapements.png"))
-  
+  # SEe 00-plot-UpperSoG-esc.R
 
 ```
 
@@ -55,7 +56,7 @@ knitr::include_graphics(here("figures", "escapements.png"))
 
 To be included: 
 
--Plots of Total hatchery releases (3 pops)- as in CM reports
+-Plots of Total hatchery releases (3 pops)- as in CM reports. See 00-plot-UpperSoG-hatchrel.R
 
 -Plot of CWT releases (Q/C)- as in CM reports
 
