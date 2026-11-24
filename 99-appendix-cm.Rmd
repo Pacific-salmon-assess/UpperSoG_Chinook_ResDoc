@@ -1,0 +1,586 @@
+\newpage
+
+# APPENDIX `r new_appendix()`. CONDITIONING MODEL {#app:app-cm}
+
+---
+
+## Data
+
+The CWT releases and total hatchery releases were sourced from DFO’s Salmonid Enhancement Program (SEP) Enhancement Planning and Assessment database (EPAD) compiled by Brendan Zoehner (pers. comm, DFO Stock Assessment, BC Islands and Coastal Area). The CWT recoveries were sourced from the Mark Recovery Program (MRP) database by Catarina Wor (pers. comm. DFO Science). Observed escapements and proportion of spawners taken as brood stock were sourced from the New Salmon Escapement Database (NuSEDs), compiled by Théa Rachinsky and Matt Clarke (pers. comm. DFO Stock Assessment, BC Islands and Coastal Area). 
+
+More details on escapement data and sampling methodologies are provided in the Research Document.
+
+
+### Quinsam/Campbell Rivers
+
+#### Escapement
+
+Natural spawner adult abundances were extracted from NUSEDS reviewed by Théa Rachinsky (DFO Stock Assessment, BC Islands and Coastal Area) for 1984-2024.The 2025 data were trimmed to match the CWT recovery data.
+
+#### CWT releases and recoveries
+
+CWT recovery data were extracted from the Pacific Salmon Treaty Chinook Technical Committee (CTC) camp data, with assignments to pre-terminal and terminal fisheries, where pre-terminal fisheries are assumed to exploit immature salmon prior to the year of return, and terminal fisheries are assumed to exploit mature salmon during return migration. CWT recoveries caught in three terminal fisheries: Alaska Terminal Troll ("TAK TERM T", 15 tags), Southwest WCVI Terminal Net ("TWCVI TERM N", 1 tag), and North Freshwater Sport ("TNORTH FS", 1 tag)  were assigned to escapement since Quinsam River fish are generally not thought to be vulnerable to these fisheries terminally. The same assumption was made for Adam, Salmon and Nimpkish Rivers.  CWT recoveries were included in the following terminal fisheries: North Georgia Strait Freshwater Sport ("TGS FS", 6 tags), North Georgia Strait Terminal Sport ("TGEO ST TERM S", 562 tags), and Johnstone Strait Terminal Sport ("TJNST TERM S", 246 tags). The remaining fisheries were considered pre-terminal.
+
+Only traditional CWT releases (smolt 0+ and seapen0+) were included, as this is the dominant release type for Quinsam River. Fry comprise a small component of releases are were not considered here.
+
+CWT recoveries from 1984-2024 were included in analyses to match the start date of the escapement time-series. Available 2025 CWT recovery data do not include US recoveries so were omitted.
+
+#### Total hatchery releases
+
+Hatcheries releases were included from the following releases sites: Quinsam Lk, Quinsam Lk Up, Quinsam R, Quinsam R Up, Cold Cr, Campbell Ch, Campbell Est, Campbell R, Campbell Transitn, Elk Fall Ch, Second Is Sl, Discovery Pass, Orange Pt, Deepwater Bay, Drew Hb, and Taku Lodge as fish from these sites are expected to return to Quinsam and Campbell Rivers. These sites include seapen releases that are expected to return to the Quinsam and Campbell Rivers.
+
+
+
+### Adam/Eve Rivers
+
+#### Escapement
+
+Natural spawner adult abundances were extracted from NUSEDS reviewed by Matt Clarke pers. comm. DFO Stock Assessment, BC Islands and Coastal Area) for 2002-2024.The 2025 data were trimmed to match the CWT recovery data.
+
+#### CWT releases and recoveries
+
+CWT recovery data were extracted from the CTC ‘camp’ data, with assignments to fisheries as for Quinsam and Campbell Rivers with two exceptions. Two terminal fisheries were assigned to escapement as Adam River fish are not thought to be vulnerable to those fisheries: North Georgia Strait Terminal Sport (“TGEO ST TERM S”) and North Georgia Strait Freshwater Sport (“TGS FS”). Also, one terminal fishery was assigned to pre-terminal Johnstone Strait Terminal Sport (“TJNST TERM S”), as the model did not converge with this fishery set to ‘terminal’ due to data limitations. Assigning these CWTs to a pre-terminal instead of terminal fishery will slightly underestimate exploitation, but impacts are likely minimal due to the small size/low vulnerability to this fishery (246 tags over the entire time series). Therefore, for Adam River, only a single pre-terminal fishery ER was estimated, and this exploitation includes the overall impact of pre-terminal and terminal fisheries.
+
+As above, only traditional releases (smolt 0+ and seapen0+) were included), as this is the dominant release type for Quinsam River.
+
+CWT releases and recoveries 2002-2024 were included to match the start date of the escapement time-series. Available 2025 CWT recovery data do not include US recoveries so were omitted.
+
+### Salmon River
+
+#### Escapement
+
+Natural spawner adult abundances were extracted from NUSEDS reviewed by Matt Clarke (pers. comm. DFO Stock Assessment, BC Islands and Coastal Area) for 2002-2024.The 2025 data were trimmed to match the CWT recovery data.
+
+#### CWT releases and recoveries
+
+CWT recovery data were extracted from the CTC ‘camp’ data, with assignments to fisheries as for Quinsam and Campbell Rivers with two exceptions.  Recoveries from two terminal fisheries were assigned to escapement as Salmon River fish are not thought to be vulnerable to those fisheries: North Georgia Strait Terminal Sport (“TGEO ST TERM S”) and North Georgia Strait Freshwater Sport (“TGS FS”), similar to Adams River.  Also, recoveries from one terminal fishery were included: Johnstone Strait Terminal Sport (“TJNST TERM S”).
+
+As above, only traditional releases (smolt 0+ and seapen0+) were included), as this is the dominant release type for Quinsam River.
+
+CWT release and recoveries from 2002-2024 were included to match the start date of the escapement time-series. Available 2025 CWT recovery data do not include US recoveries so were omitted.
+
+#### Total hatchery releases
+
+Hatchery releases were included from the following releases sites: Salmon R/JNST, Salmon R Up/JNST, and Pallans Cr as fish from these sites are expected to return to the Salmon River.
+
+### Nimpkish River
+
+#### Escapement
+
+Natural spawner adult abundances were extracted from NUSEDS reviewed by Matt Clarke (pers. comm. DFO Stock Assessment, BC Islands and Coastal Area) for 2001-2024.The 2025 data was trimmed to match the CWT recovery data.
+
+#### CWT releases and recoveries
+
+CWT recovery data were extracted from the CTC ‘camp’ data, with assignments to fisheries as for Quinsam and Campbell Rivers with one exception.  Recoveries from one terminal fishery, North Georgia Strait Freshwater Sport (“TGS FS”),  were assigned to escapement as Nimpkish River fish are not thought to be vulnerable to this fisheries. Recoveries from two terminal fisheries were included: Johnstone Strait Terminal Sport (“TJNST TERM S”) and North Georgia Strait Terminal Sport (“TGEO ST TERM S”), as in Quinsam/Campbell. Unlike Adam and Salmon River, Nimpkish River salmon migrate through mainland inlets and are vulnerable to North Georgia Strait Terminal Sport fishery that operates in these areas (Natt Clarke pers. comm. DFO Stock Assessment, BC Islands and Coastal Area).
+
+As above, only traditional releases (smolt 0+ and seapen0+) were included), as this is the dominant release type for Quinsam River.
+
+
+CWT releases and recoveries from 2001-2024 were included to match the start date of the escapement time-series. Available 2025 CWT recovery data do not include US recoveries so were omitted.
+
+
+#### Total hatchery releases
+Hatcheries releases were included from the following releases sites: Woss R, Woss Lk, Nimpkish R, Nimpkish R Up, Nimpkish Lk, Sebalhall Cr, Vernon Lk, Anutz Lk, Wagidis Ch, Rough Bay Cr, and Alert Bay as fish from these sites are expected to return to the Nimpkish River (including Woss River).
+
+
+## Model Description
+
+The conditioning model was applied to Quinsam and Campbell populations combined using CWT time-series from Quinsam River, as fish that are released from hatcheries in these systems return to both rivers.  We further applied the model to 3 additional populations dominated by natural origin fish using CWTs from Quinsam River. We assumed exploitation of these rivers was similar to that of Quinsam/Campbell but were not vulnerable to some of the terminal fisheries, as listed in the data section above. Adam, Salmon and Nimpkish Rivers are not exposed to fishing in North Georgia Strait freshwater sport fishing, and Adam and Salmon River are not vulnerable to North Georgia Strait terminal net fishery. Further evaluation of differing marine distributions among populations and impacts on vulnerability to exploitation was beyond the scope of this report. 
+
+The conditioning model predicted Chinook abundances by population, for each age class across the historical time period where CWT releases and recoveries, escapement, and total hatchery releases are available (Table \@ref(tab:cm-years)).
+
+```{r cm-years, tab.cap="Years estimated in the conditioning model for each population"}
+
+
+tab1 <- data.frame(Populations = c("Quinsam/Campbell Rivers", 
+                                   "Adam/Eve Rivers", 
+                                   "Salmon River",
+                                   "Nimpkish River"),
+                   Years = c("1984-2024",
+                             "2002-2024",
+                             "2002-2024",
+                             "2001-2024"))
+flextable::flextable(tab1)|> 
+  set_table_properties(layout = "autofit")
+
+
+```
+
+<!--CH omit:
+| Population | Years |
+|---|---|
+| Quinsam River/Campbell River | 1984-2024 |
+| Adam River | 2002-2024 |
+| Salmon River | 2002-2024 |
+| Nimpkish River | 2001-2024 |
+-->
+
+## Equations: CWTs
+
+First, life-cycle parameters are informed by fish with CWTs, assuming annually varying estimates of mortality where the number of juveniles, age 1-4 are calculated as:
+
+\begin{equation}
+  N^{juv,CWT}_{y+1,a+1}=N^{juv,CWT}_{y,a}\exp(-v^{PT}_aF^{PT}_y)(1-m_{y,a})\exp(-M_{y,a})
+  (\#eq:Njuv-cwt1)
+\end{equation}
+
+where $N^{juv,CWT}_{y,a}$ is the number of juveniles with CWTs in year $y$ at age $a$, $v^{PT}_a$ is the vulnerability to preterminal fishing at age $a$, $F^{PT}_y$is instantaneous pre-terminal fishing mortality in year $y$, $m_{y,a}$ is the proportion that mature in year $y$ at age $a$, and $M_{y,a}$ is the instantaneous natural mortality rate in year $y$ at age $a$. The number of juveniles at age 1 is calculated from the number of hatchery releases $ N^{rel,CWT}$  in year 1 and post-release survival rate $s_{rel}$ to the smolt stage,
+
+
+\begin{equation}
+  N^{juv,CWT}_{y,1}=N^{rel,CWT}_{y}s_{rel}
+  (\#eq:Njuv-cwt2)
+\end{equation}
+
+
+The number of fish with CWTs that return to spawn, $R^{CWT}_{y,a}$, is calculated from the number of juveniles maturing in year y and at age $a$ that are not taken in the pre-terminal fishery,
+
+\begin{equation}
+R^{CWT}_{y,a}=N^{juv,CWT}_{y,a}\exp(-v^{PT}_aF^{PT}_y)m_{y,a}
+  (\#eq:R-cwt)
+\end{equation}
+
+The escapement of fish with CWTs $E^{CWT}_{y,a}$ in year $y$ at age $a$ is equal to the number of fish that return and escape terminal fisheries, $F^{T}$,
+
+
+\begin{equation}
+E^{CWT}_{y,a}=R^{CWT}_{y,a}\exp(-v^{T}_aF^{T}_y)s_{enroute}
+  (\#eq:E-cwt)
+\end{equation}
+
+where $v^{T}_a$ is vulnerability-at-age to terminal fisheries and $s_{enroute}$ is enroute survival during return migration.  The pre-terminal and terminal catch of fish with CWTs, $C^{CWT,PT}_{y,a}$ and $C^{CWT,T}_{y,a}$ in year $y$ at age $a$ are calculated as,
+
+\begin{equation}
+C^{CWT,PT}_{y,a}=N^{juv,CWT}_{y,a}(1-\exp(-v^{PT}_aF^{PT}_y))
+  (\#eq:C-cwtpt)
+\end{equation}
+
+\begin{equation}
+C^{CWT,T}_{y,a}=R^{CWT}_{y,a}(1-\exp(-v^{T}_aF^{T}_y)).
+  (\#eq:C-cwtt)
+\end{equation}
+
+## Population reconstruction
+
+For the broader population beyond CWT fish, the model accounts for both natural-origin (NO) and hatchery-origin (HO) spawners.
+
+### Egg-smolt equations
+
+Egg production $Egg_y$ is calculated from the number of natural-origin and hatchery-origin spawners, $NOS_{y,a}$  and $HOS_{y,a}$, the relative reproductive success of hatchery-origin spawners $γ$, fecundity per spawner by age, $f_a$, and $s^{pre}$, pre-spawn mortality rate, 
+
+\begin{equation}
+Egg_y=\sum_a f_a s_{pre}(NOS_{y,a}+\gamma HOS_{y,a}).
+  (\#eq:Egg)
+\end{equation}
+
+Smolt production is calculated from the Ricker spawner-recruitment relationship, 
+
+\begin{equation}
+Smolt_{y+1}=\alpha' Egg_y \exp(-\beta' Egg_y)\exp(-\delta_y)
+  (\#eq:Smolt)
+\end{equation}
+
+Where $α$ is the productivity parameter in smolts/egg, $β$ is the density-dependence parameter (inverse of egg numbers at maximum smolt production), and  $δ_y$ is the annual deviation from the spawner-recruitment relationship. The spawner-recruitment relationship was structured as in Walters and Korman (2024) and Filipovic et al. (in press) by defining egg-smolt mortality $M^{egg}_{y}$ as,
+
+
+\begin{equation}
+M^{egg}_{y}=M^{egg}_{min}+\beta' Egg_y+\delta_y
+  (\#eq:Megg)
+\end{equation}
+
+where $β×Egg_y$ is a density-dependent mortality term and $δ_y$ is annual deviations as above, and  $M^{egg}_{min}$  is the density independent egg-smolt mortality when egg production approaches zero, which can be defined as, 
+
+
+\begin{equation}
+M^{egg}_{min}=-\log(\kappa)-\log(\phi^{-1})
+  (\#eq:Megg-min)
+\end{equation}
+
+where $κ$ <!--CH: consider changing kappa to alpha-->is full life-cycle productivity in units of adults recruits/spawner and  $ϕ$ is eggs produced per juvenile accounting for marine survival, maturity and fecundity at age, and pre-spawn mortality, calculated as,
+
+
+\begin{equation}
+\phi=\sum_a \ell_a m^{base}_a f_a s_{pre},
+  (\#eq:phi)
+\end{equation}
+
+where $m_a^{base}$ is the base maturity by age (provided as an input parameter), and $\ell_a$ is the survivourship by age,
+
+
+\begin{equation}
+\ell_a=
+\begin{cases}
+1 & a=1\\
+\ell_{a-1}\exp(-M^{base}_{a-1})(1-m^{base}_{a-1}) & a=2,\ldots,5,
+\end{cases}
+  (\#eq:cases)
+\end{equation}
+
+and $M^{base}_{a-1}$ is base natural mortality at age provided as a model input.
+Note, the Ricker $α$  and $β$ parameters in Equation (7) can then be defined using full life-cycle parameters as, 
+
+\begin{equation}
+\alpha= \kappa / \phi
+  (\#eq:alphakappa)
+\end{equation}
+
+\begin{equation}
+\beta= \log(\kappa) / (\phi J^{rep}) 
+  (\#eq:betakappa)
+\end{equation}
+
+where $J^{rep}$ is the juvenile smolt production at replacement, calculated from $S^{rep,base}$, base spawner abundances at replacement,
+
+\begin{equation}
+J^{rep} = S^{rep} \tau 
+  (\#eq:Jrep)
+\end{equation}
+
+and $τ$ is the equilibrium spawners per juvenile,
+
+\begin{equation}
+\tau=sum_a\ell_a m^{base}_a
+  (\#eq:tau)
+\end{equation}
+
+
+\begin{equation}
+S^{rep,base}=\log(\kappa) S^{max,base}.
+  (\#eq:srep)
+\end{equation}
+
+Note, the productivity equations \@ref(eq:alphakappa) - \@ref(eq:srep) pertain to initial, base assumptions about maturity and mortality, and can be updated annually. The annual realized productivity, $κ_y$, can be calculated from,
+
+
+\begin{equation}
+\kappa_y = \alpha \phi_y
+  (\#eq:kappay)
+\end{equation}
+
+where,
+
+
+\begin{equation}
+\phi_y = \sum_a \ell_{y,a} m_{y,a} f_{a} s^{pre}
+  (\#eq:phiy)
+\end{equation}
+
+\begin{equation}
+\ell_{y,a}=
+\begin{cases}
+1 & a=1\\
+\ell_{a-1}\exp(-M_{y,a-1})(1-m_{y,a-1}) & a=2,\ldots,5,
+\end{cases}
+  (\#eq:cases2)
+\end{equation}
+
+\begin{equation}
+\tau_y = \sum_a \ell_{y,a} m_{y,a}
+  (\#eq:tauy)
+\end{equation}
+
+such that,
+
+\begin{equation}
+S^{rep}_y = \log(\kappa_y) \tau_y/(\beta\phi_y)
+  (\#eq:srepy)
+\end{equation}
+
+
+\begin{equation}
+E^{rep}_y = (S^{rep}_y \phi_y)/tau_y.
+  (\#eq:erepy)
+\end{equation}
+
+The annualized productivity can be less than 1, i.e., below replacement if juvenile mortality is high and maturity is late and there are too few returns to replace the population.
+
+
+## Marine life stage
+
+Age-1 natural-origin juvenile fish $N_{y,a=1}^{juv,NO}$ are equivalent to smolts, such that,
+
+\begin{equation}
+N^{juv,NO}_{y,1}=Smolt_y
+  (\#eq:NjuvNO)
+\end{equation}
+
+Age-1 hatchery-origin juvenile fish are calculated from hatchery releases, $N_y^{rel}$, as for the CWT fish in Eqn \@ref(eq:Njuv-cwt2).
+
+\begin{equation}
+N^{juv,HO}_{y,1}=N^{rel}_ys_{rel},
+  (\#eq:NjuvHO)
+\end{equation}
+
+The abundance of juvenile natural-origin and hatchery-origin fish in subsequent ages accounts for vulnerability at age, pre-terminal fishing mortality, maturity at age, and natural marine mortality at age, calculated as,
+
+\begin{equation}
+N^{juv,NO}_{y+1,a+1}=N^{juv,NO}_{y,a}\exp(-v^{PT}_aF^{PT}_y)(1-m_{y,a})\exp(-M_{y,a})
+  (\#eq:Njuv_NO2)
+\end{equation}
+
+
+\begin{equation}
+N^{juv,HO}_{y+1,a+1}=N^{juv,HO}_{y,a}\exp(-v^{PT}_aF^{PT}_y)(1-m_{y,a})\exp(-M_{y,a})
+  (\#eq:Njuv_HO2)
+\end{equation}
+
+
+## Adult life stage
+
+The returns and escapement for natural-origin and hatchery-origin fish can then be calculated as,
+
+\begin{equation}
+R^{NO}_{y,a}=N^{juv,NO}_{y,a}\exp(-v^{PT}_aF^{PT}_y)m_{y,a}
+  (\#eq:RNO)
+\end{equation}
+
+\begin{equation}
+R^{HO}_{y,a}=N^{juv,HO}_{y,a}\exp(-v^{PT}_aF^{PT}_y)m_{y,a}
+  (\#eq:RHO)
+\end{equation}
+
+
+\begin{equation}
+E^{NO}_{y,a}=R^{NO}_{y,a}\exp(-v^{T}_aF^{T}_y)s^{enroute}
+  (\#eq:ENO)
+\end{equation}
+
+
+\begin{equation}
+E^{HO}_{y,a}=R^{HO}_{y,a}\exp(-v^{T}_aF^{T}_y)s^{enroute}
+  (\#eq:EHO)
+\end{equation}
+
+where $s^{enroute}$ is enroute survival during return migration. The number of natural-origin and hatchery-origin spawners is then calculated from the escapement and proportion of escapement after enroute mortality that spawn, $p_y^{spawn}$, 
+
+\begin{equation}
+NOS_{y,a}=E^{NO}_{y,a}p^{spawn}_y
+  (\#eq:NOS)
+\end{equation}
+
+\begin{equation}
+HOS_{y,a}=E^{HO}_{y,a}p^{spawn}_y
+  (\#eq:HOS)
+\end{equation}
+
+$p_y^{spawn}$ is calculated from the proportion of spawners not removed for brood or other purposes. The model assumes brood take is non-selective for model stability.
+
+
+## Parameter estimation and priors
+
+### Natural production
+
+A lognormal prior is used for productivity, $κ$, and for $S^(max,base)$,
+
+\begin{equation}
+\log(\kappa)\sim N(\log\kappa_{mu,prior},\log\kappa_{sig,prior})
+  (\#eq:kappa)
+\end{equation}
+
+\begin{equation}
+\log(S_{max,base})\sim N(\log S_{mu,max,prior},\log S_{sig,max,prior})
+  (\#eq:Smax)
+\end{equation}
+
+
+where $\log\kappa_{mu,prior}$ and $\log\kappa_{sig,prior}$ are the mean and standard deviation on a minimally informative prior on $\log(κ)$ based on a meta-analysis of spawner-recruitment relationships for Chinook salmon across the NE Pacific, and  $\log S_{mu,max,prior}$ and $\log S_{sig,max,prior}$ are the mean and standard deviation of an informative prior on $\log(S_{max,base})$ based on a habitat model that uses accessible watershed area to predict habitat capacity  [@brown_west_2026; @kitching_integrated_nodate]. See Appendix \@ref(app:priors) for more details.
+
+Annual deviations from the egg-smolt relationship were estimated with a normal prior,
+
+\begin{equation}
+\delta_y\sim N(0,\sigma_\delta^2)
+  (\#eq:delta)
+\end{equation}
+
+
+with a hyperprior on #\sigma_\delta$, 
+
+\begin{equation}
+\sigma_\delta\sim Gamma(2,5).
+  (\#eq:sigdelta)
+\end{equation}
+
+### Natural mortality
+
+\begin{equation}
+M_{y,a}=
+\begin{cases}
+M^{base}_{a} + M^{add}_{a-1} + \epsilon_y, & a=1\\
+M^{base}_{a} & a=2,\ldots,5,
+\end{cases}
+  (\#eq:casesM)
+\end{equation}
+
+where $M_a^{base}$ are base values for natural mortality by age inputted into the conditioning model, $M^{add}$ is an additional scalar for age-1 mortality, and $ϵ_y$ are annual deviations in age-1 mortality, with Gaussian priors,
+
+\begin{equation}
+\epsilon_y\sim N(0,\sigma_M^2)
+  (\#eq:eps)
+\end{equation}
+
+\begin{equation}
+\sigma_M\sim Gamma(2,5).
+  (\#eq:sigM)
+\end{equation}
+
+### Fishing mortality
+
+Annual fishing mortality values are parameterized as annual deviation from a lognormal distribution,
+
+\begin{equation}
+F^{PT}_y=exp(a^{PT})exp(\omega^{FPT}_y)
+  (\#eq:fpt)
+\end{equation}
+
+\begin{equation}
+F^{T}_y=exp(a^{T})exp(\omega^{FT}_y)
+  (\#eq:ft)
+\end{equation}
+
+where $a$ is a scaling coefficient for preterminal and terminal fisheries, and $ω$ are annual deviations with priors,
+
+\begin{equation}
+\omega^{FPT}\sim Normal(0,\sigma^2_{FPT})
+  (\#eq:omegaFPT)
+\end{equation}
+
+
+\begin{equation}
+\omega^{FT}\sim Normal(0,\sigma^2_{FT})
+  (\#eq:omegaFT)
+\end{equation}
+
+and hyperpriors on $\sigma^2_{FPT}$ and $\sigma^2_{FT}$,
+
+\begin{equation}
+\sigma^{FPT}\sim Gamma(2,5)
+  (\#eq:sigmaFPT)
+\end{equation}
+
+
+\begin{equation}
+\sigma^{FPT}\sim Gamma(2,5).
+  (\#eq:sigmaFPT)
+\end{equation}
+
+
+### Vulnerability
+
+Vulnerabilities at age for the pre-terminal and terminal fisheries are independent, estimated in logit space with prior density function that is Gaussian,
+
+\begin{equation}
+logit(v^{PT}_a)\sim Normal(logit(\mu^{vPT}_a),1.75^2)
+  (\#eq:vPT)
+\end{equation}
+
+
+\begin{equation}
+logit(v^{T}_a)\sim Normal(logit(\mu^{vT}_a),1.75^2)
+  (\#eq:vT)
+\end{equation}
+
+where $μ_a^{vPT}$ and $μ_a^{vT}$  are the prior means specified as an input to the conditioning model. Vulnerability if fixed at zero for age-1 and one for the maximum age.
+
+### Maturity
+
+Maturity-at-age values are similarly estimated in logit space with Gaussian priors from base maturity-at-age parameters ($m_a^{base}$) that are included as inputs to the conditioning model, and standard deviations by age, $σ_a^m$,
+
+\begin{equation}
+logit(m_{y,a})\sim Normal(logit(m^{base}_a),[\sigma^m_a]^2)
+  (\#eq:mprior)
+\end{equation}
+
+with a hyperprior on $\sigma^m_a$,
+
+\begin{equation}
+\sigma^{m}_a\sim Gamma(2,5).
+  (\#eq:sigmam)
+\end{equation}
+
+
+### Spawner abundances
+
+Spawner abundances are fit to observed time-series with log-normally distributed errors (see Likelihood section below) with variance, $σ^E$, that includes a prior,
+
+
+\begin{equation}
+\sigma^{E}\sim Gamma(2,5).
+  (\#eq:sigmae)
+\end{equation}
+
+
+## Initial abundances
+
+The equilibrium age distribution in the first year is calculated from the initial juvenile survival $l_a^{Finit}$ and age and the initial Fishing mortality rate for pre-terminal fisheries, $F^{init,PT}$,
+
+\begin{equation}
+l^{Finit}_a =
+\begin{cases}
+1 & a=1\\
+l_{a-1}\exp(-v^{PT}_{a-1})F^{nit,PT}exp(-M^{base}_{a-1}, & a=2,\ldots,5,
+\end{cases}
+  (\#eq:casesl)
+\end{equation}
+
+The juvenile abundance is back-calculated from an initial spawner abundances, $S^{init}$ is set to the first observed escapement abundance, and an initial assumption about $pHOS$,
+
+\begin{equation}
+N^{juv,NO}_{y=1,a} = s^{init}/\tau^{init} (1-pHOS_{init}) l^{Finit}_a
+  (\#eq:njuvinitNO)
+\end{equation}
+
+
+\begin{equation}
+N^{juv,HO}_{y=1,a} = s^{init}/\tau^{init} pHOS_{init} l^{Finit}_a
+  (\#eq:njuvinitHO)
+\end{equation}
+
+where the initial spawners-per-juvenile, $\tau^{init}$ is calculated as,
+
+\begin{equation}
+\tau^{init} = \sum_a l^{Finit}_a exp(-v^{PT}_aF^{init,PT})m^{base}_a.
+  (\#eq:tauinit)
+\end{equation}
+
+
+## Likelihoods
+
+### Total escapement
+
+The likelihood of the observed total escapement, $\hat E$, is log-normally distributed:
+
+\begin{equation}
+\log( E_y)\sim N\left(\log\left(\sum_a(\hat E^{NO}_{y,a}+\hat E^{HO}_{y,a}) \right),\sigma_E^2\right)
+  (\#eq:LLE)
+\end{equation}
+
+
+### CWT catches and escapement by age
+
+The likelihoods of the observed CWTs at age in preterminal and terminal fisheries at age, $\hat C_{y,a}^{CWT,PT}$ and $\hat C_{y,a}^{CWT,T}$ , and on the spawning grounds,$\hat E_{y,a}^{CWT}$ , are Poisson distributed,
+
+\begin{equation}
+C^{CWT,PT}_{y,a}\sim Poisson(\lambda^{-1} \hat C^{CWT,PT}_{y,a})
+  (\#eq:LLCPT)
+\end{equation}
+
+\begin{equation}
+C^{CWT,T}_{y,a}\sim Poisson(\lambda^{-1} \hat C^{CWT,T}_{y,a})
+  (\#eq:LLCT)
+\end{equation}
+
+\begin{equation}
+E^{CWT}_{y,a}\sim Poisson(\lambda^{-1} \hat E^{CWT}_{y,a})
+  (\#eq:LLECWT)
+\end{equation}
+
+
+where $λ$ is an expansion factor, currently scaled 1. When CWTs are unexpanded numbers, then the scaling factor can account for the proportion of the population sampled for CWTs (e.g., $λ$= 10 would be appropriate if 10% of the population is sampled for CWTs).
+
+<!-- CH notes: 
+
+- Missing large table of input parameters
+- $\alpha'$ and $\beta'$ is used for for the egg-smolt relationship.
+- Retained $\kappa$ notation consistent with Walters and Korman (2024), but consider switching to \alpha 
+-->
+

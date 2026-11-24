@@ -22,7 +22,7 @@ knitr::include_graphics(here("figures", "iwam.png"))
 ```
 
 
-```{r table-smax-iwam, table.cap="Priors on spanwer abundances at maximum recruitment for Nimpkish, Salmon and Adam/Eve Rivers"}
+```{r table-smax-iwam, table.cap="Priors on spawner abundances at maximum recruitment for Nimpkish, Salmon and Adam/Eve Rivers"}
 
 Smax_hab <- as.data.frame(
   read.csv(

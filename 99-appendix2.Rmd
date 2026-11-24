@@ -1,5 +1,0 @@
-\newpage
-
-# APPENDIX `r new_appendix()`. CONDITIONING MODEL {#app:app-cm}
-
-This Appendix describes data and parameter inputs into the conditioning model, and the model equations, currently in "CM-Appendix Documentation.docx" (to be moved here, maybe using AI to convert equations to latex)
