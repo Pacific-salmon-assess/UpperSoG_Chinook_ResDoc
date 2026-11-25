@@ -26,9 +26,9 @@ The conditioning model was based on a state-space, age-structured, life-cycle mo
 
 The model uses spawner abundance, CWT releases and recoveries, and total hatchery releases to estimate catch, exploitation rates, spawner abundances and total number of returns across 5 age classes (Fig. \@ref(fig:fig-cm)), for each population separately. Briefly, the model estimates freshwater and marine natural mortality rates and fisheries pre-terminal and terminal mortality, where pre-terminal fisheries are defined as occurring on immature fish and terminal fisheries occur on mature fish during return migration. Density-dependence in recruitment is modelled through a Ricker spawner-recruit model reparameterized to predict the annual egg-smolt mortality rate. Marine mortality is assumed to be density-independent. Time-varying parameters are estimated for first marine year mortality rates, maturation rates and fishing (pre-terminal and terminal) mortality rates. 
 
-There are five main differences between the model described by @walters_life_2024 and the conditioning model presented here. First, the current model estimates both pre-terminal and terminal fisheries from CWT data instead of only pre-terminal fisheries. Second, the current model tracks hatchery-origin and natural-origin fish throughout their life-cycle allowing for the calculations of pHOS and PNI metrics over time, which are not tracked in @walters_life_2024. Third, the current model includes priors on life-cycle productivity and capacity (the Ricker spawner-recruitment parameters) based on a meta-analysis of spawner recruitment relationships for Chinook Salmon across the NE Pacific and a habitat model of Chinook capacity (see Appendix \@ref(app:priors))), which allows for the estimation of MSY-based benchmarks not included in @walters_life_2024. Fourth, the current model does not include covariates on marine survival (e.g., seal predation and SST), due to weak support for their inclusion for the Upper Strait of Georgia <!--CH comment: Matt can you please elaborate on why this support is weak, if required-->. Fifth, the current application of the conditioning model includes only 5 age classes instead of 6, since age-6 fish are poorly sampled in the CWT monitoring program for Chinook in the Upper Strait of Georgia making their estimation difficult.
+There are five main differences between the model described by @walters_life_2024 and the conditioning model presented here. First, the current model estimates both pre-terminal and terminal fisheries from CWT data instead of only pre-terminal fisheries. Second, the current model tracks hatchery-origin and natural-origin fish throughout their life-cycle allowing for the calculations of pHOS and PNI metrics over time, which are not tracked in @walters_life_2024. Third, the current model includes priors on life-cycle productivity and capacity (the Ricker spawner-recruitment parameters) based on a meta-analysis of spawner recruitment relationships for Chinook Salmon across the NE Pacific and a habitat model of Chinook capacity (see Appendix \@ref(app:app-priors))), which allows for the estimation of MSY-based benchmarks not included in @walters_life_2024. Fourth, the current model does not include covariates on marine survival (e.g., seal predation and SST), due to weak support for their inclusion for the Upper Strait of Georgia <!--CH comment: Matt can you please elaborate on why this support is weak, if required-->. Fifth, the current application of the conditioning model includes only 5 age classes instead of 6, since age-6 fish are poorly sampled in the CWT monitoring program for Chinook in the Upper Strait of Georgia making their estimation difficult.
 
-The model was fit in a Bayesian framework in RTMB (v1.9) using R version 4.5.1 [@r_core_team_r_2025]. Code for the conditioning model is provided in the [salmonMSE Github repository](https://github.com/Blue-Matter/salmonMSE) and applied in the [Upper Straight of Georgia Github repository](https://github.com/Pacific-salmon-assess/UpperSoG_Chinook).
+The model was fit in a Bayesian framework in RTMB (v1.9) using R version 4.5.1 [@r_core_team_r_2025]. Code for the conditioning model is provided in the [salmonMSE Github repository](https://github.com/Blue-Matter/salmonMSE) and applied in the Upper Strait of Georgia Chinook [Github repository](https://github.com/Pacific-salmon-assess/UpperSoG_Chinook).
 
 ```{r fig-cm, fig.cap="Schematic of the conditioning model summarizing interactions among key parameters, constants, and state variables modelled in the conditioning model (adapted from Filipovic et al in press). Orange arrows and rectangles represent estiamted freshwater and ocean mortality rates. Green arrows and rectangles represent estimated maturation rates. Blue arrows and rectangles represent estimated exploitation. Black rectangles represent assumed constants.  Circles represent life stages (black) and catch (blue). Grey circles, boxes and arrows represent hatchery dynamics not explicitly modelled in the conditioning model, that are inferred from hatchery releases.", fig.width=6.5, fig.height=3.5}
 
@@ -41,28 +41,60 @@ The schematic in Figure \@ref(fig:fig-cm) shows the interactions among key param
 
 ### DATA INPUTS
 
-Natural spawner abundances (escapement) were extracted from NUSEDS reviewed by M. Clarke and T. Rachinksy (DFO StAD) (Fig. \@ref(fig:fig-esc)). The 2025 data were trimmed to match the CWT recovery data.
+Escapement times-series were extracted from NUSEDS reviewed by M. Clarke and T. Rachinksy (DFO BC Coastal and Islands Area) (Fig. \@ref(fig:fig-esc)). Abundances  abundances prior to removals for brood, CWT or other purposes were used in the conditioning model as well as the proportion of escapement removed prior to spawning. The 2025 data were trimmed to match the CWT recovery data.
 
 
-```{r fig-esc, fig.cap="Observed total escapement (return to river, points with dotted lines) and posterior predicted values (medians and 95% prediction interval), for four populations.", fig.width=5, fig.height=3.5}
+```{r fig-esc, fig.cap="Observed total escapement (return to river, points with dotted lines) and posterior predicted values (medians and 95% prediction interval), for four populations.", fig.width=5, fig.height=5}
 
 
 knitr::include_graphics(here("figures", "escapements.png"))
-  # SEe 00-plot-UpperSoG-esc.R
+  # SEe 00-plot-UpperSoG-data.R
+
+```
+
+Hatchery release data were complied by SEP (B. Zoehner, pers. comm.) and include smolt age-0+ releases from in-river hatchery facilities and seapens where releases are expected to return to individual rivers (Fig. \@ref(fig:fig-hatch)). Releases at younger life stages were minimal in most years and were not considered here.
+
+```{r fig-hatch, fig.cap="Hatchery releases of smolt 0+ fish by population", fig.width=5, fig.height=5}
+
+knitr::include_graphics(here("figures", "hatchrel.png"))
+  # SEe 00-plot-UpperSoG-data.R
 
 ```
 
 
+CWT release and recovery data for Quinsam River were complied by DFO SEP and Core Science (B. Zoehner and C. Wor pers. comm.), with recoveries identified in pre-terminal and terminal fisheries (Fig and in the escapement (Fig. \@ref(fig:fig-cwtrel) - \@ref(fig:fig-cwtrec3). 
 
-To be included: 
+```{r fig-cwtrel, fig.cap="CWT releases from Quinsam River", fig.width=2.5, fig.height=2.5}
 
--Plots of Total hatchery releases (3 pops)- as in CM reports. See 00-plot-UpperSoG-hatchrel.R
+knitr::include_graphics(here("figures", "cwtQCrel.png"))
+  # SEe 00-plot-UpperSoG-data.R
 
--Plot of CWT releases (Q/C)- as in CM reports
+```
 
--plot of CWT recoveries (Q/C); 3: PT catch by age, T catch by age, esc by age, with estimated values
+```{r fig-cwtrec1, fig.cap="Quinsam CWT recoveries at age in pre-terminal fisheries (points with dotted lines) and posterior predicted values (medians and 95% prediction interval).", fig.width=5, fig.height=5}
 
-Details in Appendix.
+knitr::include_graphics(here("figures", "cwtQCrecpt.png"))
+  # SEe 00-plot-UpperSoG-data.R
+
+```
+
+
+```{r fig-cwtrec2, fig.cap="Quinsam CWT recoveries at age in terminal fisheries (points with dotted lines) and posterior predicted values (medians and 95% prediction interval).", fig.width=5, fig.height=5}
+
+knitr::include_graphics(here("figures", "cwtQCrect.png"))
+  # SEe 00-plot-UpperSoG-data.R
+
+```
+
+```{r fig-cwtrec3, fig.cap="Quinsam CWT recoveries at age in escapement (points with dotted lines) and posterior predicted values (medians and 95% prediction interval).t", fig.width=4, fig.height=4}
+
+knitr::include_graphics(here("figures", "cwtQCrecesc.png"))
+  # SEe 00-plot-UpperSoG-data.R
+
+```
+
+
+More details are provided in Appendix \ref@(#app:app-cm).
 
 ## REFERENCE POINTS
 
@@ -114,9 +146,14 @@ There are several implicit assumptions frequently associated with these referenc
 
 4. All spawners are equally fecund.
 
-Because this approach to estimating reference points assumes that exploitation is terminal on fully vulnerable age classes and exploitation on this SMU is largely pre-terminal, catches and associated exploitation rates must be converted to ‘adult equivalents’ that account for mortality in the ocean and maturation rates that would have occurred if those fish had been caught terminally. This allows for comparability between estimates of $U_{MSY}$ and estimated catches and exploitation rates.
+4. Population dynamics are at equilibrium.
 
-Benchmarks were calculated for each population separately, for only the natural-dominated populations due to the lack of density-dependent dynamics in the Quinsam/Campbell population.
+Because this approach to estimating reference points assumes that exploitation is terminal on fully vulnerable age classes and exploitation on this SMU is largely pre-terminal, catches and associated exploitation rates must be converted to ‘adult equivalents’ that account for mortality in the ocean and maturation rates that would have occurred if those fish had been caught terminally. This allows for comparability between estimates of $U_{MSY}$ (that assume only terminal fisheries) and estimated total catches and exploitation rates across terminal and pre-terminal fisheries.
+
+The assumptions underlying the calculation of equilibrium values for $U_{MSY}$ also mean that exploitation rates that maximize sustainable yield in reality differ when exploitation occurs in both pre-terminal and terminal fisheries, vulnerability and fecundity vary by age, and recruitment dynamics vary interannually (Appendix \ref@(app:app-msy). 
+
+Benchmarks were calculated for each population separately, for the natural-dominated populations only due to the lack of density-dependent dynamics in the Quinsam/Campbell population that were driven by hatchery production instead.
+
 
 ### CU-LEVEL BENCHMARKS AND SMU-LEVEL REFERENCE POINTS
 
@@ -143,7 +180,7 @@ To estimate $S_{MSY}$ and $U_{MSY}$, the equilibrium spawning population size, $
   (\#eq:seq)
 \end{equation}
 
-where $U$ is the exploitation rate which was varied between 0–99% in 1% increments (as in @brown_west_2026). Posterior distributions of $log(\alpha)$ and $beta$ were pulled from the conditioning models, summarized in [ref: table]
+where $U$ is the exploitation rate which was varied between 0–50% in 1% increments (as in @brown_west_2026). Salmon and Adam Rivers are located further north in Johnstone Strait than Nimpkish and Quinsam/Campbell Rivers, and fish from Salmon and Adam Rivers are not vulnerable to several terminal fisheries in the Strait of Georgia that Nimpkish and Quinsam/Campbell River fish are vulnerable to (see Appendix \ref@(#app:app-cm)) and therefore experience lower exploitation than Nimpkish and Quinsam/Campbell Rivers. We accounted for this difference in exploitation in the trade-off analyses by aligning exploitation rates of each population according to those that would be experienced simultaneously by each population.  Posterior distributions of $log(\alpha)$ and $beta$ were pulled from the conditioning models, summarized in [ref: table]
 
 ADD table (see par_vals in equilibrium trade-off code)
 
@@ -154,7 +191,7 @@ The corresponding harvest at equilibrium was then calculated for each population
   (\#eq:heq)
 \end{equation}
 
-The $H_{eq}$ values were then summed across the three populations for each level of $U$ to derive the aggregate equilibrium harvest. When plotted against $U$, this provides the exploitation rate that maximizes yield under equilibrium conditions $U_{MSY}$ as the peak of the curve. The associated sum of $S{eq}$ across the three populations can be plotted as a secondary axes to identify the spawner abundances where yield is maximized, $S_{MSY}$. Uncertainty intervals were generated by repeating this procedure over all 4000 samples of the posteriors for $log(\alpha)$ and $beta$.
+The $H_{eq}$ values were then summed across the three populations for each level of $U$ to derive the aggregate equilibrium harvest, where exploitation for Salmon and Adam Rivers were shifted to account for their reduced vulnerability to terminal fisheries. When plotted against $U$, this provides the exploitation rate that maximizes yield under equilibrium conditions $U_{MSY}$ as the peak of the curve. The associated sum of $S{eq}$ across the three populations can be plotted as a secondary axes to identify the spawner abundances where yield is maximized, $S_{MSY}$. Uncertainty intervals were generated by repeating this procedure over all 4000 samples of the posteriors for $log(\alpha)$ and $beta$.
 
 We further calculated population-specific $U_{MSY}$ values using Eqn. \@ref(eq:umsy) and parameters in Table X, and calculated the number of populations that would be exploited above their $U_{MSY}$ for each exploitation rate increment. Additionally, we calculated population-specific $U_{gen}$ values as the exploitation rate where spawner abundances are equivalent to their $S_{gen}$, and for each candidate $U$,  plotted the number of populations where that $U$ is greater than population-specific $U_{gen}$ values. In this way, it is possible to identify how many populations will be exploited sufficiently high for their abundances to drop below $S_{gen}$ when the aggregate sustainable yield is maximized, under equilibrium abundances.
 

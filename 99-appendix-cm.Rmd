@@ -15,7 +15,7 @@ More details on escapement data and sampling methodologies are provided in the R
 
 #### Escapement
 
-Natural spawner adult abundances were extracted from NUSEDS reviewed by Théa Rachinsky (DFO Stock Assessment, BC Islands and Coastal Area) for 1984-2024.The 2025 data were trimmed to match the CWT recovery data.
+Escapement abundances prior to removals for brood, CWTs and other purposes were extracted from NUSEDS and reviewed by Théa Rachinsky (DFO Stock Assessment, BC Islands and Coastal Area) for years 1984-2024.The 2025 data were trimmed to match the CWT recovery data. Time-series of the proportion of the escapement removed prior to spawning were also extracted for used in the conditioning model.
 
 #### CWT releases and recoveries
 
@@ -35,7 +35,7 @@ Hatcheries releases were included from the following releases sites: Quinsam Lk,
 
 #### Escapement
 
-Natural spawner adult abundances were extracted from NUSEDS reviewed by Matt Clarke pers. comm. DFO Stock Assessment, BC Islands and Coastal Area) for 2002-2024.The 2025 data were trimmed to match the CWT recovery data.
+Escapement abundances were extracted from NUSEDS and reviewed by Matt Clarke (pers. comm. DFO Stock Assessment, BC Islands and Coastal Area) for years 2002-2024.The 2025 data were trimmed to match the CWT recovery data.
 
 #### CWT releases and recoveries
 
@@ -49,7 +49,7 @@ CWT releases and recoveries 2002-2024 were included to match the start date of t
 
 #### Escapement
 
-Natural spawner adult abundances were extracted from NUSEDS reviewed by Matt Clarke (pers. comm. DFO Stock Assessment, BC Islands and Coastal Area) for 2002-2024.The 2025 data were trimmed to match the CWT recovery data.
+Escapement abundances prior to removals for brood and other purposes were extracted from NUSEDS and reviewed by Matt Clarke (pers. comm. DFO Stock Assessment, BC Islands and Coastal Area) for years 2002-2024.The 2025 data were trimmed to match the CWT recovery data. Time-series of the proportion of the escapement removed prior to spawning were also extracted for used in the conditioning model.
 
 #### CWT releases and recoveries
 
@@ -67,7 +67,7 @@ Hatchery releases were included from the following releases sites: Salmon R/JNST
 
 #### Escapement
 
-Natural spawner adult abundances were extracted from NUSEDS reviewed by Matt Clarke (pers. comm. DFO Stock Assessment, BC Islands and Coastal Area) for 2001-2024.The 2025 data was trimmed to match the CWT recovery data.
+Escapement abundances prior to removals for brood and other purposes were extracted from NUSEDS and reviewed by Matt Clarke (pers. comm. DFO Stock Assessment, BC Islands and Coastal Area) for years 2001-2024.The 2025 data was trimmed to match the CWT recovery data.Time-series of the proportion of the escapement removed prior to spawning were also extracted for used in the conditioning model.
 
 #### CWT releases and recoveries
 
@@ -370,7 +370,7 @@ $p_y^{spawn}$ is calculated from the proportion of spawners not removed for broo
 
 ### Natural production
 
-A lognormal prior is used for productivity, $κ$, and for $S^(max,base)$,
+A lognormal prior is used for productivity, $κ$, and for $S_{max,base}$,
 
 \begin{equation}
 \log(\kappa)\sim N(\log\kappa_{mu,prior},\log\kappa_{sig,prior})

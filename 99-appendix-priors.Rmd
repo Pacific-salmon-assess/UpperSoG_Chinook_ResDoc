@@ -5,7 +5,7 @@ output:
 ---
 \newpage
 
-# APPENDIX `r new_appendix()`. CONDITIONING MODEL: PRIORS ON SPAWNER-RECRUITMENT PARAMETERS {#app:priors}
+# APPENDIX `r new_appendix()`. CONDITIONING MODEL: PRIORS ON SPAWNER-RECRUITMENT PARAMETERS {#app:app-priors}
 
 
 The conditioning model includes priors on parameters of the spawner-recruitment relationship: spawner abundances at maximum recruitment, $S_{MAX}$ and productivity, $log(\alpha)$. Priors on $S_{MAX}$ are derived from the integrated watershed area model, IWAM, [@kitching_integrated_nodate], and priors on $log(\alpha)$ are derived from a meta-analyses of spawner-recruitment relationships from British Columbia [@greenberg_non-stationary_nodate].
