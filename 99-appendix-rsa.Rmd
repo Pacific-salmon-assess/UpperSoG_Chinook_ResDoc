@@ -1,0 +1,8 @@
+
+\newpage
+
+# APPENDIX `r new_appendix()`. CU RAPID STATUS ASSESSMSENT {#app:app-rsa}
+
+---
+
+text

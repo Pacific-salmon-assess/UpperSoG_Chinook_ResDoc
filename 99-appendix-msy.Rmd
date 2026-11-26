@@ -1,11 +1,67 @@
----
-output:
-  word_document: default
-  html_document: default
----
+
 \newpage
 
-# APPENDIX `r new_appendix()`. CALCULATIONS OF MAXIMUM SUSTAINABLE YIELD {#app:app-msy}
+# APPENDIX `r new_appendix()`. COMPARISON OF MAXIMUM SUSTAINABLE YIELD UNDER DIFFERENT MODEL PARAPMETERIZATIONS {#app:app-msy}
+
+---
+
+For each of the three natural-dominated systems, we compared calculated $U_{MSY}$ value with the exploitation rate that maximizes projected catches after 30 years in the projection model, salmonMSE, under various assumptions of increasing complexity and realism.  The population parameters were drawn from the conditioning models for each population. These scenarios were for a single populations with:
 
 
-Text here
+(1) only a terminal fishery, a single age-at-maturity that is fully vulnerable at maturity, and no uncertainty or interannual variability in population parameters,
+
+(2) only a terminal fishery, multiple ages-at-maturity that are fully vulnerable at maturity, and no uncertainty or interannual variability in population parameters,
+
+(3) pre-terminal and terminal fisheries, multiple ages-at-maturity, vulnerability at age, uncertainty in parameters, and no interannual variability in population parameters, and
+
+(4) the same as (c) but with interannual deviations in freshwater egg-smolt relationship deviation and 1st year marine mortality.
+
+
+
+
+For scenarios (1) and (2), the terminal exploitation rate was varied from 0-50% in increments of 1% in projections, and for scenarios (3) and (4), pre-terminal exploitation rate was varied from 0-50%, or 0-70% for Salmon River, in increments of 1% assuming a constant, fixed terminal exploitation estimated from the conditioning model (Fig \ref@fig(fig-msy1) - \ref@fig(fig-msy3)). This fixed terminal exploitation was subtracted from the calculated $U_{MSY}$ to provide comparable values with projection outcomes. 
+
+
+
+```{r fig-msy1, fig.cap="Exploitation at maximum sustainable yield calculated from the Ricker equation (dashed line) and identified as an emergent property of projections for Salmon River (peak of dots), where dots represent the median projected yield after 30 years under a range of terminal exploitation rates (x-axis), and under scenarios (a) with only a terminal fishery, a single age-at-maturity that is fully vulnerable at maturity, and no uncertainty or interannual variability in population parameters, (b) only a terminal fishery, multiple ages-at-maturity that are fully vulnerable at maturity, and no uncertainty or interannual variability in population parameters, and (c, solid dots) pre-terminal and terminal fisheries, multiple ages-at-maturity, vulnerability at age, uncertainty in parameters, and no interannual variability in population parameters, and (c, hollow dot), the same as the previous scenario with with interannual deviations in freshwater egg-smolt relationship deviation and 1st year marine mortality.", fig.width=5, fig.height=5}
+
+knitr::include_graphics(here("figures", "gUmsy_combined2Salmon.png"))
+  # SEe 00-plot-UpperSoG-data.R
+
+```
+
+
+```{r fig-msy2, fig.cap="Caption as above, but for Adam/Eve Rivers", fig.width=5, fig.height=5}
+
+knitr::include_graphics(here("figures", "gUmsy_combined2Adam.png"))
+  # SEe 00-plot-UpperSoG-data.R
+
+```
+
+
+```{r fig-msy3, fig.cap="Caption as above, but for Nimpkish Rivers", fig.width=5, fig.height=5}
+
+knitr::include_graphics(here("figures", "gUmsy_combined2Nimpkish.png"))
+
+
+```
+
+
+
+As expected, in scenarios (1) and (2) the exploitation rate that maximized yield matched the calculated values for all populations (Figs. \ref@fig(fig:sdev1) and \ref@fig(fig:sdev2), panels (a) and (b)). In scenario (3) the maximum yield was close to, but not equal to the calculated value (Figs. \ref@fig(fig:sdev1) and \ref@fig(fig:sdev2), panel (c)). In scenario (4), the maximum yield was much greater than the calculated value for all populations, but especially Salmon and Nimpkish Rivers (Figs. \ref@fig(fig:sdev1) and \ref@fig(fig:sdev2), panel (c)). When interannual variability in recruitment deviations is included in projections, exploitation that maximizes yield tends to be higher than the calculated values as years of high recruitment tend to enhance populations more than years of poor recruitment deplete them. This phenomenon relates to the log-normal distribution of recruitment deviations, is well known in fisheries, as is sometimes refereed to as non-linear averaging or Jensen's inequality [@bernhardt_nonlinear_2018]. The increase in the emergent value for the exploitation rate that maximizes yield was greater for Salmon and Nimpkish Rivers where the magnitude of annual deviations is relatively high, compared with Adam/Eve Rivers.
+
+
+```{r fig-sdev1, fig.cap="Density of interannual recruitment deviations from egg-smolt relationship estimated from the conditioning model for the three natural-dominated populations", fig.width=5, fig.height=4}
+
+knitr::include_graphics(here("figures", "RickerResidualDens.png"))
+
+
+```
+
+```{r fig-sdev2, fig.cap="Annual recruitment deviations from egg-smolt relationship estimated from the conditioning model for the three natural-dominated populations", fig.width=5, fig.height=3}
+
+knitr::include_graphics(here("figures", "RickerResidComb.png"))
+
+
+```
+

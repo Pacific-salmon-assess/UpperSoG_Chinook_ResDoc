@@ -196,7 +196,7 @@ M^{egg}_{min}=-\log(\kappa)-\log(\phi^{-1})
   (\#eq:Megg-min)
 \end{equation}
 
-where $κ$ <!--CH: consider changing kappa to alpha-->is full life-cycle productivity in units of adults recruits/spawner and  $ϕ$ is eggs produced per juvenile accounting for marine survival, maturity and fecundity at age, and pre-spawn mortality, calculated as,
+where $κ$ <!--CH: Changing kappa to alpha to match alpha used in main main text for MSY ref points from eq trade-off. CHeck for consistentcy everhwere-->is full life-cycle productivity in units of adults recruits/spawner and  $ϕ$ is eggs produced per juvenile accounting for marine survival, maturity and fecundity at age, and pre-spawn mortality, calculated as,
 
 
 \begin{equation}
@@ -315,13 +315,13 @@ The abundance of juvenile natural-origin and hatchery-origin fish in subsequent 
 
 \begin{equation}
 N^{juv,NO}_{y+1,a+1}=N^{juv,NO}_{y,a}\exp(-v^{PT}_aF^{PT}_y)(1-m_{y,a})\exp(-M_{y,a})
-  (\#eq:Njuv_NO2)
+  (\#eq:Njuv-NO2)
 \end{equation}
 
 
 \begin{equation}
 N^{juv,HO}_{y+1,a+1}=N^{juv,HO}_{y,a}\exp(-v^{PT}_aF^{PT}_y)(1-m_{y,a})\exp(-M_{y,a})
-  (\#eq:Njuv_HO2)
+  (\#eq:Njuv-HO2)
 \end{equation}
 
 
@@ -383,7 +383,7 @@ A lognormal prior is used for productivity, $κ$, and for $S_{max,base}$,
 \end{equation}
 
 
-where $\log\kappa_{mu,prior}$ and $\log\kappa_{sig,prior}$ are the mean and standard deviation on a minimally informative prior on $\log(κ)$ based on a meta-analysis of spawner-recruitment relationships for Chinook salmon across the NE Pacific, and  $\log S_{mu,max,prior}$ and $\log S_{sig,max,prior}$ are the mean and standard deviation of an informative prior on $\log(S_{max,base})$ based on a habitat model that uses accessible watershed area to predict habitat capacity  [@brown_west_2026; @kitching_integrated_nodate]. See Appendix \@ref(app:priors) for more details.
+where $\log\kappa_{mu,prior}$ and $\log\kappa_{sig,prior}$ are the mean and standard deviation on a minimally informative prior on $\log(κ)$ based on a meta-analysis of spawner-recruitment relationships for Chinook salmon across the NE Pacific, and  $\log S_{mu,max,prior}$ and $\log S_{sig,max,prior}$ are the mean and standard deviation of an informative prior on $\log(S_{max,base})$ based on a habitat model that uses accessible watershed area to predict habitat capacity  [@brown_west_2026; @kitching_integrated_nodate]. See Appendix \@ref(app:app-priors) for more details.
 
 Annual deviations from the egg-smolt relationship were estimated with a normal prior,
 
@@ -393,7 +393,7 @@ Annual deviations from the egg-smolt relationship were estimated with a normal p
 \end{equation}
 
 
-with a hyperprior on #\sigma_\delta$, 
+with a hyperprior on $\sigma_\delta$, 
 
 \begin{equation}
 \sigma_\delta\sim Gamma(2,5).
