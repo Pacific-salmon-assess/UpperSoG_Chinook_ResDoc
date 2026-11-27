@@ -180,7 +180,7 @@ To estimate $S_{MSY}$ and $U_{MSY}$, the equilibrium spawning population size, $
   (\#eq:seq)
 \end{equation}
 
-where $U$ is the exploitation rate which was varied between 0–50% in 1% increments (as in @brown_west_2026). Salmon and Adam Rivers are located further north in Johnstone Strait than Nimpkish and Quinsam/Campbell Rivers, and fish from Salmon and Adam Rivers are not vulnerable to several terminal fisheries in the Strait of Georgia that Nimpkish and Quinsam/Campbell River fish are vulnerable to (see Appendix \@ref(app:app-cm)) and therefore experience lower exploitation than Nimpkish and Quinsam/Campbell Rivers. We accounted for this difference in exploitation in the trade-off analyses by aligning exploitation rates of each population according to those that would be experienced simultaneously by each population.  Posterior distributions of $log(\alpha)$ and $beta$ were pulled from the conditioning models, summarized in Table \@ref(tab:parvals-tradeoff).
+where $U$ is the exploitation rate which was varied between 0–50% in 1% increments (as in @brown_west_2026). Salmon and Adam River Chinook have a different marine spatial distribution than Nimpkish River and are not vulnerable to several terminal fisheries in the Strait of Georgia that Nimpkish and Quinsam/Campbell River fish are vulnerable to (see Appendix \@ref(app:app-cm)) and therefore Salmon and Adam River Chinook experience lower exploitation than Nimpkish and Quinsam/Campbell Rivers. We accounted for this difference in exploitation in the trade-off analyses by aligning exploitation rates of each population according to those that would be experienced simultaneously. Posterior distributions of $log(\alpha)$ and $beta$ were derived in the conditioning models, summarized in Table \@ref(tab:parvals-tradeoff).
 
 
 ```{r parvals-tradeoff, tab.cap="Full life-cycle population parameters used in equilibrium trade-off analyses for Adam/Eve, Salmon and Nimpkish Rivers. Log(alpha) is the logarithm of the productivity parameter, or log(adult recruits/spawner) at low spawner abundances, and beta is the density dependence parameter, or the inverse of spawners at maximum recruitment. 95% confidence intervals are shown in parentheses."}
@@ -222,7 +222,7 @@ set_header_labels(f,
 
 
 
-The corresponding harvest at equilibrium was then calculated for each population and level of $U$ as,
+The corresponding harvest at equilibrium, $H_{eq}$, was then calculated for each population and level of $U$ as,
 
 \begin{equation}
   H_{eq} = (\alpha S_{eq} e^{-\beta S_{eq}}) - S_{eq}.
@@ -235,22 +235,44 @@ We further calculated population-specific $U_{MSY}$ values using Eqn. \@ref(eq:u
 
 ### RAPID STATUS ASSESSMENT: CU-BASED LRP
 
-CU status was assessed using the WSP Rapid Status evaluation approach (Pestal et al. 2023; DFO 2024; Grant et al. 2026). A status of Green, Amber, or Red is assigned annually to the CU, representing low, moderate and high extinction risk respectively, using a combination of metrics and benchmarks according to an algorithm designed to align with expert opinion on the determination of status. Confidence levels are also assigned annually. "Built on a foundation of International Union for Conservation of Nature (IUCN) processes and adapted for Pacific Salmon, these methods are based on fundamental principles of conservation biology and are designed to be widely applicable, relatively easy to implement, comparable, objective,
-reproducible, and transparent" (Grant et al. 2026). 
+CU status was assessed using the WSP Rapid Status assessment approach (Pestal et al. 2023; DFO 2024) applied to the aggregate of the natural-dominated populations: Nimpkish, Salmon and Adam/Eve Rivers. The Rapid Status Assessments were developed to provide  widely applicable, comparable, reproducible, transparent, and objective CU statuses based on conservation biology principles and initially applied to International Union for Conservation of Nature (IUCN) assessment processes and adapted for Pacific salmon. (Grant et al. 2026). 
 
-CU-status was determined in an iterative process with CU experts’ input from DFO and First Nations to review data and data processing, status determination, and associated narratives (Appendix \@ref(app:app-rsa)). 
+A status of Green, Amber, or Red was assigned to each year of the historical time-series, representing low, moderate and high extinction risk. Status zones were identified using a combination of metrics and benchmarks according to an algorithm designed to align with expert opinion on the determination of status. Confidence levels were also assigned annually, categorized into low, moderate or high confidence. 
 
+CU-status was determined in an iterative process with input from DFO and First Nations CU experts to review data and data processing, status determination, and associated narratives (Appendix \@ref(app:app-rsa)). 
+
+
+The time series of spawner abundances used in the assessment was estimated as the sum of population-level estimates from the conditioning model. Status was determined by comparing recent generational average spawner abundances with absolute spawner abundance thresholds 1,500 and 10,000) and lower and upper relative-abundance benchmarks, $S_{gen}$ and 85% $S_{MSY}$. Relative-abundance benchmarks were estimated as described above using outputs form the conditioning model and the equilibrium trade-off analysis.
 
 
 ## PROJECTIONS
 
-The projection tool uses an operating model to simulate population trajectories and outcomes of management procedures, while incorporating feedback between the two at each timestep (Figure 1). The operating model may be parameterized with data and outputs from historical modelling, or values drawn from expert knowledge or literature sources. The operating model is defined by five components, outlined below: biological, habitat, hatchery, harvest and historical. Outcomes can be summarized with a range of probabilistic performance metrics, such as the probability of exceeding spawner abundance reference points or PNI (proportionate natural influence) thresholds. salmonMSE can be of particular interest for modelling multiple populations co-mingling in mixed-stock fisheries, or interacting via straying. In such cases, the components of the operating model can be defined and simulated across multiple populations simultaneously.
+Projections were implemented using **salmonMSE**, a management strategy evaluation tool developed for Pacific salmon to evaluate fisheries, hatchery, and habitat management options [@huynh_salmonmse_nodate]. **salmonMSE** uses an operating model to simulate population trajectories and outcomes of management procedures incorporating feedback between them annually (Figure 1). The operating model was parameterized with data and outputs from the conditioning model, expert knowledge, and literature sources. The operating model is defined by five components described below: biological, harvest, hatchery, harvest and historical. 
+
+Outcomes were summarized with a range performance metrics related harvest, conservation, and wildness objectives, such as total catches, the probability of exceeding spawner abundance benchmarks or reference points, or probability of being above PNI (proportionate natural influence) thresholds, as described in more detail below. 
+
+
+```{r salmonMSE, fig.cap="Conceptual diagram of the salmonMSE projection tool, adapted from Huynh et al. (in press)."}
+
+knitr::include_graphics(here("figures", "salmonMSE_flowchart_draft_v2_cropped.png"))
+# From salmonMSE tech report
+
+```
+
+
+
 
 
 ### salmonMSE OVERVIEW
 
+#### BIOLOIGCAL COMPONENT
 
-Estimated parameters for survival, maturity, and fishing rates from the conditioning model are used to project population dynamics with **salmonMSE**.
+The biological component of the operating model determines the population and life-history components of projection. This component specified egg-smolt density dependent freshwater survival modeled with a Ricker relationships, age-specific marine survival rates, maturity at age, enroute mortality after fisheries have occurred, pre-spawn mortality rate, and fecundity at age. 
+
+Describe which components included uncertainty, and which included time-varying deviations
+
+
+<!--CH: move to after hatchery section?-->The biological, harvest, and hatchery model structures align with those components of the conditioning model to ensure estimated parameters represent dynamics expected under projected management scenarios. Two exceptions are that the projection model includes (1) hatchery survival rates inferred from expert sources not included in the conditioning model as the conditioning model  used the historical time-series of hatchery releases as data input, and (2) fitness impacts of introgression between natural-origin and hatchery-origin fish. While introgression from hatchery-origin fish can impact fitness of natural-origin fish over long-time frames and equilibrium conditions over short time frames (e.g., 30 years) these effects are assumed to be negligible.
 
 
 ### PERFORMANCE MEASURES
